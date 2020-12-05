@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-    helper_method :login!
+    skip_before_action :verify_authenticity_token 
+    # research this 
+    helper_method :login!, :logged_in?, :current_user, :authorised_user, :logout!, :set_user
 
     def login! 
         session[:user_id] = @user.user_id
