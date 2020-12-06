@@ -1,5 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :users_countries
+    has_many :countries, through: :users_countries 
+
 
     validates :username, presence: true
     validates :username, length: { minimum: 4 }
