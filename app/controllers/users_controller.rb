@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         else
             render :json => {
                 status: 500,
-                errors: @user.errors.full_messages
+                errors: ["Something went wrong. Please try again."]
             }
         end 
     end 
