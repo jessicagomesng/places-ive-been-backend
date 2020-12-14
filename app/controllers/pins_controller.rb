@@ -17,7 +17,7 @@ class PinsController < ApplicationController
         user = User.find_by_id(params["user_id"])
         pins = user.pins 
 
-        render :json => pins, only: [:id, :caption, :img, :xCoord, :yCoord]
+        render :json => pins, :except => [:created_at, :updated_at]
     end 
 
 end
