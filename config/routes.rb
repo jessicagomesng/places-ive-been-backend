@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :pins, only: [:index]
   end 
 
-  resources :pins, only: [:create] 
+  resources :pins, only: [:create, :update, :destroy] 
 
   resources :countries, only: [:index]
   # resources :users_countries do 

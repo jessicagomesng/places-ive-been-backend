@@ -20,4 +20,20 @@ class PinsController < ApplicationController
         render :json => pins, :except => [:created_at, :updated_at]
     end 
 
+    def update 
+        pin = Pin.find_by_id(params["pin"]["id"])
+        if pin.update(:img => params["pin"]["img"], :location => params["pin"]["location"], :caption => params["pin"]["caption"])
+            render :json => pin, except: [:created_at, :updated_at]
+        else 
+            render :json => { message: 'Something went wrong. Please try again.' }
+        end 
+    end
+
+    def destroy 
+        pin = Pin.find_by_id(params[:id])
+        pin.destroy
+
+        render :json => pin
+    end 
+
 end
