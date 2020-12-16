@@ -8,9 +8,14 @@ class PinsController < ApplicationController
         pin.xCoord = params[:pin][:xPerc]
         pin.yCoord = params[:pin][:yPerc]
 
-        pin.save
-
-        render :json => pin, except: [:created_at, :updated_at]
+        if pin.save
+            render :json => pin, except: [:created_at, :updated_at]
+        else 
+            render :json => {
+                status: 500,
+                errors: pin.errors.full_messages
+            }
+        end 
     end 
     
     def index
@@ -25,7 +30,10 @@ class PinsController < ApplicationController
         if pin.update(:img => params["pin"]["img"], :location => params["pin"]["location"], :caption => params["pin"]["caption"])
             render :json => pin, except: [:created_at, :updated_at]
         else 
-            render :json => { message: 'Something went wrong. Please try again.' }
+            render :json => {
+                status: 500,
+                errors: pin.errors.full_messages
+            }        
         end 
     end
 
