@@ -4,9 +4,13 @@ class UsersController < ApplicationController
 
         if @user.save 
             login!
+            # move this to login! metho
+            token = Auth.create_token({:username => @user.username, :id => @user.id, :email => @user.email})
             render :json => {
                 status: :created,
-                user: @user
+                logged_in: true,
+                token: token,
+                user: { :id => @user.id, :username => @user.username, :email => @user.email, :countries => @user.countries },
             }
         else
             render :json => {
