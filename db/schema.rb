@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_130145) do
+ActiveRecord::Schema.define(version: 2020_12_20_121059) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_12_14_130145) do
     t.integer "user_id"
     t.string "caption"
     t.string "img"
-    t.float "xCoord"
-    t.float "yCoord"
+    t.float "xPerc"
+    t.float "yPerc"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "location"

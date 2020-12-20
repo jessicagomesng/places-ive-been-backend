@@ -5,8 +5,8 @@ class PinsController < ApplicationController
         pin.img = params[:pin][:img]
         pin.location = params[:pin][:location] 
         pin.caption = params[:pin][:caption]
-        pin.xCoord = params[:pin][:xPerc]
-        pin.yCoord = params[:pin][:yPerc]
+        pin.xPerc = params[:pin][:xPerc]
+        pin.yPerc = params[:pin][:yPerc]
 
         if pin.save
             render :json => pin, except: [:created_at, :updated_at]
