@@ -7,10 +7,7 @@ Rails.application.routes.draw do
   resources :pins, only: [:create, :update, :destroy] 
 
   resources :countries, only: [:index]
-  # resources :users_countries do 
-  #   collection do 
-  #     post :create_or_destroy 
-  #   end 
+
   resources :users_countries, only: [:create]
   
   post '/login', to: 'sessions#create'

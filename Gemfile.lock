@@ -45,6 +45,8 @@ GEM
     activerecord (6.0.3.4)
       activemodel (= 6.0.3.4)
       activesupport (= 6.0.3.4)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activestorage (6.0.3.4)
       actionpack (= 6.0.3.4)
       activejob (= 6.0.3.4)
@@ -90,6 +92,7 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -155,11 +158,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgresql-adapter
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   jwt (~> 2.2.2)
   listen (~> 3.2)
+  pg
   pry
   puma (~> 4.1)
   rack-cors
