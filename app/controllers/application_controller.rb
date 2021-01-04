@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token 
-        # research this 
+
     include ::ActionController::Cookies 
 
     helper_method :login!, :logged_in?, :current_user, :authorised_user, :logout!, :set_user
@@ -22,8 +22,6 @@ class ApplicationController < ActionController::Base
     end 
 
     def logout!
-        # session.clear 
-        # cookies.delete(:jwt, :domain => :all) 
         reset_session
     end 
 

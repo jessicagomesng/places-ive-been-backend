@@ -4,32 +4,15 @@ class SessionsController < ApplicationController
         @user = User.find_by(:username => session_params[:username])
         if @user && @user.authenticate(session_params[:password])
             token = Auth.create_token({:username => @user.username, :id => @user.id, :email => @user.email})
-            # returned_user = Auth.decode_token(token)
-            # created_jwt = issue_token({ :id => @user.id })
-            # cookies.signed[:jwt] = { 
-            #     :value => token, 
-            #     :httponly => true,
-            #     :expires => 1.hour.from_now }
+
             render :json => {
                 logged_in: true,
                 user: { :id => @user.id, :username => @user.username, :email => @user.email, :countries => @user.countries },
                 token: token,
-                # user: { :id => @user.id, :username => @user.username, :email => @user.email, :countries => @user.countries },
                 status: 200
             }
-            # token = Auth.create_token({:username => @user.username, :id => @user.id, :email => @user.email})
-            # returned_user = Auth.decode_token(token)
-            # render :json => {
-            #     logged_in: true,
-            #     user: returned_user[0]['user'],
-            #     status: 200,
-            #     # token: token
-            # }
             login!
-            # render :json => {
-            #     logged_in: true,
-            #     user: { :id => @user.id, :username => @user.username, :email => @user.email, :countries => @user.countries }
-            # }
+
         else 
             render :json => {
                 status: 404,
